@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrownbetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblCustomer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCustomer_Bet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaceId" Type="bigint" Nullable="false" />
+    <Property Name="HorseId" Type="bigint" Nullable="false" />
+    <Property Name="CustomerId" Type="bigint" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblHorse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRace">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="StatusId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRace_Horse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaceId" Type="bigint" Nullable="false" />
+    <Property Name="HorseId" Type="bigint" Nullable="false" />
+    <Property Name="Odds" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRaceStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblCustomer_Bet_tblCustomer">
+    <End Role="tblCustomer" Type="Self.tblCustomer" Multiplicity="1" />
+    <End Role="tblCustomer_Bet" Type="Self.tblCustomer_Bet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCustomer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblCustomer_Bet">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomer_Bet_tblHorse">
+    <End Role="tblHorse" Type="Self.tblHorse" Multiplicity="1" />
+    <End Role="tblCustomer_Bet" Type="Self.tblCustomer_Bet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHorse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblCustomer_Bet">
+        <PropertyRef Name="HorseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCustomer_Bet_tblRace">
+    <End Role="tblRace" Type="Self.tblRace" Multiplicity="1" />
+    <End Role="tblCustomer_Bet" Type="Self.tblCustomer_Bet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRace">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblCustomer_Bet">
+        <PropertyRef Name="RaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRace_Horse_tblHorse">
+    <End Role="tblHorse" Type="Self.tblHorse" Multiplicity="1" />
+    <End Role="tblRace_Horse" Type="Self.tblRace_Horse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHorse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRace_Horse">
+        <PropertyRef Name="HorseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRace_Horse_tblRace">
+    <End Role="tblRace" Type="Self.tblRace" Multiplicity="1" />
+    <End Role="tblRace_Horse" Type="Self.tblRace_Horse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRace">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRace_Horse">
+        <PropertyRef Name="RaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRace_tblRaceStatus">
+    <End Role="tblRaceStatus" Type="Self.tblRaceStatus" Multiplicity="1" />
+    <End Role="tblRace" Type="Self.tblRace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRaceStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRace">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_GetCustomerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetHorseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RaceID" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_GetRaceDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetTotalBets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="CrownbetModelStoreContainer">
+    <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCustomer_Bet" EntityType="Self.tblCustomer_Bet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblHorse" EntityType="Self.tblHorse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRace" EntityType="Self.tblRace" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRace_Horse" EntityType="Self.tblRace_Horse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRaceStatus" EntityType="Self.tblRaceStatus" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblCustomer_Bet_tblCustomer" Association="Self.FK_tblCustomer_Bet_tblCustomer">
+      <End Role="tblCustomer" EntitySet="tblCustomer" />
+      <End Role="tblCustomer_Bet" EntitySet="tblCustomer_Bet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomer_Bet_tblHorse" Association="Self.FK_tblCustomer_Bet_tblHorse">
+      <End Role="tblHorse" EntitySet="tblHorse" />
+      <End Role="tblCustomer_Bet" EntitySet="tblCustomer_Bet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCustomer_Bet_tblRace" Association="Self.FK_tblCustomer_Bet_tblRace">
+      <End Role="tblRace" EntitySet="tblRace" />
+      <End Role="tblCustomer_Bet" EntitySet="tblCustomer_Bet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRace_Horse_tblHorse" Association="Self.FK_tblRace_Horse_tblHorse">
+      <End Role="tblHorse" EntitySet="tblHorse" />
+      <End Role="tblRace_Horse" EntitySet="tblRace_Horse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRace_Horse_tblRace" Association="Self.FK_tblRace_Horse_tblRace">
+      <End Role="tblRace" EntitySet="tblRace" />
+      <End Role="tblRace_Horse" EntitySet="tblRace_Horse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRace_tblRaceStatus" Association="Self.FK_tblRace_tblRaceStatus">
+      <End Role="tblRaceStatus" EntitySet="tblRaceStatus" />
+      <End Role="tblRace" EntitySet="tblRace" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

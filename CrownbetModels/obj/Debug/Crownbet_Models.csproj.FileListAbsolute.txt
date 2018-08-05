@@ -1,0 +1,5 @@
+c:\users\acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\CrownbetModels\bin\Debug\CrownbetModels.dll
+c:\users\acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\CrownbetModels\bin\Debug\CrownbetModels.pdb
+c:\users\acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\CrownbetModels\obj\Debug\CrownbetModels.dll
+c:\users\acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\CrownbetModels\obj\Debug\CrownbetModels.pdb
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\CrownbetModels\obj\Debug\Crownbet_Models.csprojResolveAssemblyReference.cache

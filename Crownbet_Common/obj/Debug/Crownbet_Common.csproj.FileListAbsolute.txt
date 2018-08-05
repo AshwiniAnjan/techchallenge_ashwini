@@ -1,0 +1,8 @@
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\bin\Debug\Crownbet_Common.dll.config
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\bin\Debug\Crownbet_Common.dll
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\bin\Debug\Crownbet_Common.pdb
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\bin\Debug\log4net.dll
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\bin\Debug\log4net.xml
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\obj\Debug\Crownbet_Common.dll
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\obj\Debug\Crownbet_Common.pdb
+C:\Users\Acer\documents\visual studio 2015\Projects\Crownbet_Ashwini\Crownbet_Common\obj\Debug\Crownbet_Common.csprojResolveAssemblyReference.cache
